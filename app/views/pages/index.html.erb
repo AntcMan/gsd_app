@@ -1,4 +1,11 @@
-<div>
-  <h1 class="font-bold text-4xl">Here's what you have on for <%= Time.current.strftime('%A %d %B %Y') %></h1>
-  <p>Find me in app/views/pages/index.html.erb</p>
-</div>
+<h1>To-Do List</h1>
+
+<ul>
+  <% @todo_items.each do |todo_item| %>
+    <li>
+      <%= todo_item.name %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'New To-Do Item', new_todo_item_path %>
