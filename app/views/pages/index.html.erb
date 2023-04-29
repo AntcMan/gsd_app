@@ -1,4 +1,19 @@
-<div>
+<div class="head">
   <h1 class="font-bold text-4xl">Here's what you have on for <%= Time.current.strftime('%A %d %B %Y') %></h1>
   <p>Find me in app/views/pages/index.html.erb</p>
+</div>
+
+<div class="list-content">
+  <ul>
+    <%= @todo_items.each.do |todo_item| %>
+      <li>
+      <%= todo_item.name %>
+      <%= todo_item.description %>
+      <%= check_box_tag 'Completed', todo_item.id, todo_item.completed %>
+      <%= link_to 'Edit', edit_todo_item.path,todo_item %>
+      <%= link_to 'Delete', todo_item_path(todo_item), method: :destroy, data: { confirm: 'Are you sure?'} %>
+      </li>
+    <% end %>
+  </ul>
+<%= link_to 'Add new item to today/s list', new_todo_item_path %>
 </div>
