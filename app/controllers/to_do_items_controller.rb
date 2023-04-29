@@ -1,50 +1,46 @@
-class ToDoItemsController < ApplicationController
-  # INDEX
+class TodoItemsController < ApplicationController
   def index
-    @todo_items = ToDoItem.all
+    @todo_items = TodoItem.all
   end
 
-  # NEW TODO ITEMS
-  def new
-    @todo_item = ToDoItem.new
-  end
+  # def new
+  #   @todo_item = TodoItem.new
+  # end
 
-  # CREATE TODO ITEMS
-  def create
-    @todo_item = ToDoItem.new(todo_item_params)
-    if @todo_item.save
-      redirect_to :index
-    else
-      render :new
-    end
-  end
+  # def create
+  #   @todo_item = TodoItem.new(todo_item_params)
 
-  # EDIT TODO ITEMS
-  def edit
-    @todo_item = ToDo.find(params[:id])
-  end
+  #   if @todo_item.save
+  #     redirect_to todo_items_path
+  #   else
+  #     render :new
+  #   end
+  # end
 
-  # UPDATE TODO ITEMS
-  def update
-    @todo_item = ToDo.find(params[:id])
-    if @todo_item.update(todo_item_params)
-      redirect_to :index
-    else
-      render :edit
-    end
-  end
+  # def edit
+  #   @todo_item = TodoItem.find(params[:id])
+  # end
 
-  # DESTROY TODO ITEMS
-  def destroy
-    @todo_item = ToDo.item.find(params[:id])
-    @todo_item.:
+  # def update
+  #   @todo_item = TodoItem.find(params[:id])
 
-    redirect_to :index
-  end
+  #   if @todo_item.update(todo_item_params)
+  #     redirect_to todo_items_path
+  #   else
+  #     render :edit
+  #   end
+  # end
 
-  private
+  # def destroy
+  #   @todo_item = TodoItem.find(params[:id])
+  #   @todo_item.destroy
 
-  def todo_item_params
-    params.require(:todo_item).permit(:name, :description, :completed)
-  end
+  #   redirect_to todo_items_path
+  # end
+
+  # private
+
+  # def todo_item_params
+  #   params.require(:todo_item).permit(:name, :completed)
+  # end
 end
