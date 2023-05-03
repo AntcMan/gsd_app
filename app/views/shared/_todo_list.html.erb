@@ -1,0 +1,22 @@
+<div class="section">
+  </div>
+    <div class="grid grid-cols-4 gap-2 border-2 border-purple-500 m-5">
+    <div class="bg-gray-200 p-4 mx-1">Task</div>
+    <div class="bg-gray-200 p-4 mx-1">Desc</div>
+    </div>
+  </div>
+
+
+  <div class="links">
+    <p class="text-center mt-2">
+      👉🏾 Create new to-do item
+    </p>
+  </div>
+</section>
+
+<div>
+<% @todos.each do |todo_item| %>
+<%= todo_item.name %>
+<%= todo_item.description %>
+<% end %>
+</div>
