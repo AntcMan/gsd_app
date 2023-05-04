@@ -2,7 +2,7 @@
   <div class="grid grid-cols-3 gap-4 border-2 border-purple-500 m-5">
     <%# COLUMN TASK %>
     <div class="col-span-1 border-2 border-green-900">
-      <h2 class="underline text-center">
+      <h2 class="text-center capitalize">
         Task
       </h2>
       <% @todos.each do |todo_item| %>
@@ -14,7 +14,7 @@
 
     <%# COLUMN DESCRIPTION %>
     <div class="col-span-1 border-2 bordey-brown-900">
-      <h2 class="underline text-center">
+      <h2 class="text-center capitalize">
         Description
       </h2>
       <% @todos.each do |todo_item| %>
@@ -26,7 +26,7 @@
 
     <%# COLUMN COMPLETED %>
     <div class="col-span-1 border-2 bordey-gray-900">
-      <h2 class="underline text-center">
+      <h2 class="text-center capitalize">
         Completed
       </h2>
       <% @todos.each do |todo_item| %>
