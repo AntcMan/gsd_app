@@ -1,32 +1,43 @@
 <section>
   <div class="grid grid-cols-3 gap-4 border-2 border-purple-500 m-5">
     <%# COLUMN TASK %>
-    <div class="col-span-1">
-      <h2 class="p-2 underline text-center">
+    <div class="col-span-1 border-2 border-green-900">
+      <h2 class="underline text-center">
         Task
       </h2>
       <% @todos.each do |todo_item| %>
-        <div class="p-4">
+        <div class="p-4 border-b">
           <%= todo_item.name %>
-        </div>
+      </div>
       <% end %>
     </div>
+
     <%# COLUMN DESCRIPTION %>
-    <div class="col-span-1">
-      <h2 class="p-2 underline text-center">
+    <div class="col-span-1 border-2 bordey-brown-900">
+      <h2 class="underline text-center">
         Description
       </h2>
       <% @todos.each do |todo_item| %>
-        <div class="p-4">
+        <div class="p-4 border-b">
           <%= todo_item.description %>
         </div>
       <% end %>
     </div>
-    <%# COLUMN DESCRIPTION %>
-    <div class="col-span-1">
-      <h2 class="p-2 underline text-center">
+
+    <%# COLUMN COMPLETED %>
+    <div class="col-span-1 border-2 bordey-gray-900">
+      <h2 class="underline text-center">
         Completed
       </h2>
+      <% @todos.each do |todo_item| %>
+      <div class="py-4 items-center flex justify-center border-b">
+        <div>
+          <%= form_for todo_item, url: todo_path(todo_item), method: :patch do |f| %>
+          <%= f.check_box :completed, class: "mr-2 leading-tight", onchange: "this.form.submit();" %>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
     </div>
   </div>
 </section>

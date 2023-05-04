@@ -10,7 +10,7 @@ class TodosController < ApplicationController
   def create
     @todo = Todo.new(todo_params)
     if @todo.save
-      redirect_to :index, notice: 'To-do list updated!'
+      redirect_to :todos, notice: 'To-do list updated!'
     else
       render :new
     end
