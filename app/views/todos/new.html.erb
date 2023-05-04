@@ -1,41 +1,44 @@
-<h1>New Todo Item</h1>
+<div class="todo-form p-5 m-5 border-2 border-purple-500 items-center">
+  <h1 class="border-2 border-blue-500 m-5 p-2">New Todo Item</h1>
+  <%= form_with model: @todo, url: todos_path do |form| %>
+    <% if @todo.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@todo.errors.count, "error") %> prohibited this todo item from being saved:</h2>
 
-<%= form_with model: @todo, url: todos_path do |form| %>
-  <% if @todo.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@todo.errors.count, "error") %> prohibited this todo item from being saved:</h2>
+        <ul>
+          <% @todo.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-      <ul>
-        <% @todo.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+    <div class="field m-4">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+
+    <div class="field m-4">
+      <%= form.label :description %>
+      <%= form.text_field :description %>
+    </div>
+
+    <div class="field m-4">
+      <%= form.label :due_date %>
+      <%= form.date_field :due_date %>
+    </div>
+
+    <div class="field m-4">
+      <%= form.label :completed %>
+      <%= form.check_box :completed %>
+    </div>
+
+    <div class="actions m-4">
+      <%= form.submit "Create Todo Item" %>
     </div>
   <% end %>
+</div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :due_date %>
-    <%= form.date_field :due_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :completed %>
-    <%= form.check_box :completed %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit "Create Todo Item" %>
-  </div>
-<% end %>
-
-<%= link_to "Back", todos_path %>
+<div class="btn-back">
+  <%= link_to "Back", todos_path, class: 'border-2 border-red-500 px-5 py-1' %>
+</div>
