@@ -1,10 +1,20 @@
-<div class="min-h-screen border-2 border-pink-900 flex-grow">
+<div class="min-h-96 border-2 border-pink-900 flex-grow mb-8">
   <div class="section-content flex flex-col">
     <h1 class="text-2xl border-2 border-red-500 m-5 text-center">
       To-Do List For <%= Time.now.strftime('%A, %e %B, %Y') %>
     </h1>
     <%= render 'shared/todo_list' %>
   </div>
+
+  <%# PROGRESS BAR %>
+  <div class="progress-bar">
+    <div class="progress-bar" role="progressbar" style="width:
+    <%= @percentage_complete %>%;" aria-valuenow="<%= @percentage_complete %>"
+      aria-valuemin="0"
+      aria-valuemax="100">
+    Completed: <%= @progress %>%
+  </div>
+
   <%# LINKS %>
   <p class="text-center m-2 border-2 border-orange-500">
     <%= link_to "👉🏾 Create new to-do item", new_todo_path %>
