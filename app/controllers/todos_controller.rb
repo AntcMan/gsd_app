@@ -1,10 +1,8 @@
 class TodosController < ApplicationController
-  @total_items = Todo.count
-  @completed_items = Todo.where(completed: true).count
-  @percentage_complete = (@completed_items.to_f / @total_items.to_f) * 100
 
   def index
     @todos = Todo.all
+    @progress = progress_percentage
   end
 
   def new
@@ -35,6 +33,12 @@ class TodosController < ApplicationController
     @todo.destroy
   end
 
+  def progress_percentage
+    completed_todos = Todo.where(completed: true).count
+    total_todos = Todo.count
+    progress = completed_todos.fdiv(total_todos) * 100
+    progress.nan? ? 0 : progress
+  end
 
   private
 
