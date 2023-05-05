@@ -1,8 +1,7 @@
 class TodosController < ApplicationController
-
   def index
     @todos = Todo.all
-    @progress = progress_percentage
+    @progress = progress
   end
 
   def new
@@ -22,8 +21,10 @@ class TodosController < ApplicationController
     @todo = Todo.find(params[:id])
     if @todo.update(todo_params)
       if @todo.completed
-        @todo.destroy
+        @progress = progress
+        # @todo.destroy
       end
+      # @progress = progress
       redirect_to todos_path
     end
   end
@@ -33,7 +34,7 @@ class TodosController < ApplicationController
     @todo.destroy
   end
 
-  def progress_percentage
+  def progress
     completed_todos = Todo.where(completed: true).count
     total_todos = Todo.count
     progress = completed_todos.fdiv(total_todos) * 100
@@ -45,5 +46,4 @@ class TodosController < ApplicationController
   def todo_params
     params.require(:todo).permit(:name, :description, :due_date, :completed)
   end
-
 end
