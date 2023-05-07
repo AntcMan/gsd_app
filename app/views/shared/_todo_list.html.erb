@@ -33,7 +33,7 @@
       <div class="py-4 items-center flex justify-center border-b">
         <div>
           <%= form_for todo_item, url: todo_path(todo_item), method: :patch do |f| %>
-          <%= f.check_box :completed, class: "mr-2 leading-tight", onchange: "this.form.submit();" %>
+          <%= f.check_box :completed, class: "checkbox mr-2 leading-tight", onchange: "this.form.submit();" %>
           <% end %>
         </div>
       </div>
